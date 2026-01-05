@@ -31,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isSelected = false;
   bool selectedValue = false;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _textController = TextEditingController();
@@ -43,9 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
         title: Text(widget.title),
       ),
       body: Form(
@@ -84,10 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 }
               ),
               FormElement.check => Checkbox(
-                value: isSelected,
+                value: selectedValue,
                 onChanged: (bool? newValue){
                   setState(() {
-                    isSelected = newValue!;
+                    selectedValue = newValue!;
                   });
                 }
               ),
@@ -128,10 +125,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                   ),
                   Checkbox(
-                    value: isSelected,
+                    value: selectedValue,
                     onChanged: (bool? newValue){
                       setState(() {
-                        isSelected = newValue!;
+                        selectedValue = newValue!;
                       });
                     }
                   ),
@@ -161,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 if(_formKey.currentState!.validate()){
                   setState(() {
                     result = "${_textController.text}\n"
-                             "$isSelected "
+                             "$selectedValue "
                              "$selectedValue";
                   });
                 }
